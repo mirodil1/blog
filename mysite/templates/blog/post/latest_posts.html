@@ -1,0 +1,5 @@
+<ul class="collection">
+    {% for post in latest_posts %}
+        <a class="collection-item" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+    {% endfor %}
+</ul>

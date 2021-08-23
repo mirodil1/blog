@@ -1,0 +1,60 @@
+{% extends "blog/base.html" %}>
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s12 m8 l8">
+            <h3>{{ post.title }}</h3>
+            <div class="divider"></div>
+            <p class="grey-text text-lighten-1">
+                {{ post.publish }}
+                {% with comments.count as total_comments %}
+                    <span>
+                        ({{ total_comments }} comment{{ total_comments|pluralize }})
+                    </span>
+                {% endwith %}
+            </p>
+            <p id="disabled" class="flow-text" style="font-size: 16px;">
+                {{ post.body|safe}}
+            </p>
+            <div class="divider"></div>
+        </div>
+        <div class="col s12 m4 l4 z-depth-2 hoverable posts">
+             <ul class="collection with-header">
+                <li class="collection-header"><h5>Similar posts to read</h5></li>
+                {% for post in similar_posts %}
+                    <li class="collection-item"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                {% empty %}
+                    no similar posts
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col s12 m6 l8">
+            {% for comment in comments %}
+                <div class="collection">
+                    <p class="collection-item active">
+                        Comment {{ forloop.counter }} by {{ comment.name }}
+                        {{ comment.created }}
+                    </p>
+                    {{ comment.body|linebreaks }}
+                </div>
+            {% empty %}
+                <p class="grey-text text-lighten-1">There are no comments yet.</p>
+            {% endfor %}
+
+            {% if new_comment %}
+                <li class="collection-item">Your comment has benn added</li>
+            {% else %}
+                <form method="post">
+                    <p>Add new comment</p>
+                    {{ comment_form.as_p }}
+                    {% csrf_token %}
+                    <p><button type="submit" class="waves-effect waves-ligt indigo btn">Add comment<i class="material-icons right">add</i></button></p>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+

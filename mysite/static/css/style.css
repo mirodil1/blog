@@ -1,0 +1,169 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+.cont
+{
+  position:relative;
+  width:900px;
+  display:flex;
+  justify-content:space-around;
+}
+.cont .card
+{
+  position:relative;
+  width:200px;
+  background:linear-gradient(0deg,#1b1b1b,#222,#1b1b1b);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:220px;
+  border-radius:4px;
+  text-align:center;
+  overflow:hidden;
+  transition:0.5s;
+}
+.cont .card:hover
+{
+  transform:translateY(-10px);
+  box-shadow:0 15px 35px rgba(0,0,0,.5);
+}
+.cont .card:before
+{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-50%;
+  width:100%;
+  height:100%;
+  background:rgba(255,255,255,.03);
+  pointer-events:none;
+  z-index:1;
+}
+.percent
+{
+  position:relative;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  box-shadow: inset 0 0 50px #000;
+  background:#222;
+  z-index:1000;
+}
+.percent .num
+{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:50%;
+}
+.percent .num h2
+{
+  color:#777;
+  font-weight:500;
+  font-size:30px;
+  transition:0.5s;
+}
+.card:hover .percent .num h2
+{
+  color:#fff;
+  font-size:50px;
+}
+.percent .num h2 span
+{
+  color:#777;
+  font-size:24px;
+  transition:0.5s;
+}
+.card:hover .percent .num h2 span
+{
+  color:#fff;
+}
+.text
+{
+  position:relative;
+  color:#777;
+  margin-top:20px;
+  font-weight:700;
+  font-size:18px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  transition:0.5s;
+}
+.card:hover .text
+{
+  color:#fff;
+}
+svg
+{
+  position:relative;
+  width:150px;
+  height:150px;
+  z-index:1000;
+}
+svg circle
+{
+  width:100%;
+  height:100%;
+  fill:none;
+  stroke:#191919;
+  stroke-width:5;
+  stroke-linecap:round;
+  transform:translate(5px,5px);
+}
+svg circle:nth-child(2)
+{
+  stroke-dasharray:380;
+  stroke-dashoffset:150;
+}
+.card:nth-child(1) svg circle:nth-child(2)
+{
+  stroke-dashoffset:calc(440 - (440 * 90) / 100);
+  stroke:#00ff43;
+}
+
+/*.hr {*/
+/*  margin: 20px;*/
+/*  overflow :hidden;*/
+/*  text-align: left;*/
+/*  line-height: 1.6em;*/
+/*}*/
+
+/*.hr:before {*/
+/*    display: block;*/
+/*    float: right;*/
+/*    margin-top: .8em; !* half the line-height *!*/
+/*    border-top: 2px solid silver;*/
+/*    width: 80%;*/
+/*    content: "";*/
+/*}*/
+
+.title_size {
+    font-size: 19px;
+}
+
+.posts {
+    position: sticky;
+    top: 67px;
+}
+
+@media screen and (max-width: 600px) {
+    .posts {
+        display: block;
+    }
+}
+
+.under_line:hover {
+    text-decoration: underline #fff;
+    color: black;
+}

@@ -1,0 +1,40 @@
+{% load static %}
+<div  style="display: block !important;">
+    <nav class="navbar-fixed nav">
+        <div class="nav-wrapper indigo lighten-3">
+            <div class="container">
+                <a href="{% url 'blog:post_list' %}" class="brand-logo" style="color: #90caf9; ">
+                    <img src="{% static "images/logo2.png" %}" class="img-responsive" alt="logo" width="50px" height="50px" style="margin-top: 5px; color: #90caf9; ">
+                </a>
+                <a href="#" data-target="mobile-links" class="sidenav-trigger">
+                  <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <i class="material-icons right">search</i>
+                    </li>
+                    <li>
+                        <form action="{% url "blog:post_search" %}" method="GET">
+                            <input id="search" type="search" placeholder="search" name="query" class="white-text" required style="height: 50px;">
+                        </form>
+                    </li>
+                    <li><a href="{% url "blog:resume" %}">Resume</a></li>
+{#                    <li><a href="#">About</a></li>#}
+                    <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
+{#                    <li><a href="#">Learn</a></li>#}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<ul class="sidenav" id="mobile-links">
+    <li>
+        <form action="{% url "blog:post_search" %}" method="GET">
+            <input id="search" type="search" placeholder="search" name="query" required style="height: 50px;">
+        </form>
+    </li>
+    <li><a href="{% url "blog:resume" %}">Resume</a></li>
+{#    <li><a href="#">About</a></li>#}
+    <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
+{#    <li><a href="#">Learn</a></li>#}
+</ul>
